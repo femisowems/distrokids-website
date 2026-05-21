@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: pageMetadata.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -32,24 +32,24 @@ export default function RootLayout({
   // Read theme cookie on the server to SSR the chosen theme and avoid hydration mismatch
   let themeCookie: string | undefined = undefined;
   try {
-    const hdr = headers?.();
+    const hdr = await headers();
     if (hdr) {
-        // Try headers.get('cookie') if available
-        if (typeof (hdr as any).get === "function") {
-          const cookieHeader = (hdr as any).get("cookie") || "";
-          themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
-        } else if (typeof (hdr as any)[Symbol.iterator] === "function") {
-          // Iterate headers entries to find cookie
-          let cookieHeader = "";
-          for (const entry of hdr as any) {
-            const [k, v] = entry as [string, string];
-            if (k && k.toLowerCase() === "cookie") {
-              cookieHeader = v;
-              break;
-            }
+      // Try headers.get('cookie') if available
+      if (typeof (hdr as any).get === "function") {
+        const cookieHeader = (hdr as any).get("cookie") || "";
+        themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
+      } else if (typeof (hdr as any)[Symbol.iterator] === "function") {
+        // Iterate headers entries to find cookie
+        let cookieHeader = "";
+        for (const entry of hdr as any) {
+          const [k, v] = entry as [string, string];
+          if (k && k.toLowerCase() === "cookie") {
+            cookieHeader = v;
+            break;
           }
-          themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
         }
+        themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
+      }
     }
   } catch (e) {
     themeCookie = undefined;

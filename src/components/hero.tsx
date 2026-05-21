@@ -56,9 +56,12 @@ export default function Hero() {
           </motion.div>
 
           {/* Kinetic Huge Headings */}
-          <h1 className="text-[11vw] sm:text-[8vw] lg:text-[5.5vw] font-black leading-[0.85] tracking-tighter uppercase select-none mb-6">
-            <span className="block text-foreground">Own your</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-electric-blue to-neon-purple">Sound.</span>
+          <h1 className="text-[12vw] sm:text-[9vw] lg:text-[6vw] font-black font-sans leading-[0.85] tracking-tighter uppercase select-none mb-6">
+            <span className="block text-foreground light:text-black">Own your</span>
+            <span className="block">
+              <span className="hidden light:block text-black">Sound.</span>
+              <span className="block light:hidden text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-electric-blue to-neon-purple">Sound.</span>
+            </span>
           </h1>
 
           <div className="max-w-xl mb-12">

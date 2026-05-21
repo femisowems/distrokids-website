@@ -39,7 +39,7 @@ export default function AIGrowthTools() {
               GROWTH STUDIO.
             </span>
           </h2>
-          <p className="text-gray-400 font-light text-base md:text-lg">
+          <p className="text-white/60 font-light text-base md:text-lg">
             Leverage machine learning to optimize release strategies, generate captions, predict virality, and understand your audience at scale.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function AIGrowthTools() {
                       className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isActive
                           ? "border-neon-purple/40 bg-neon-purple/10 text-neon-purple"
-                          : "border-white/10 bg-white/3 text-white/40 group-hover:text-white/60"
+                          : "border-white/10 bg-white/3 text-white/60 group-hover:text-white/80"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -76,12 +76,12 @@ export default function AIGrowthTools() {
                     <div>
                       <h3
                         className={`text-sm font-bold uppercase font-mono tracking-tight mb-1 transition-colors ${
-                          isActive ? "text-white" : "text-white/60"
+                          isActive ? "text-neon-purple" : "text-foreground"
                         }`}
                       >
                         {tool.title}
                       </h3>
-                      <p className="text-xs text-white/40 font-light leading-relaxed">
+                      <p className="text-xs text-white/60 font-light leading-relaxed">
                         {tool.description}
                       </p>
                     </div>
@@ -119,7 +119,7 @@ export default function AIGrowthTools() {
                       {activeTool.badge}
                     </span>
                   </div>
-                  <span className="font-mono text-[9px] text-white/30 uppercase">
+                  <span className="font-mono text-[9px] text-white/50 uppercase">
                     DK-AI-MODULE v3.2
                   </span>
                 </div>
@@ -133,7 +133,7 @@ export default function AIGrowthTools() {
                 </div>
 
                 {/* Footer status bar */}
-                <div className="border-t border-white/5 pt-4 mt-8 flex items-center justify-between font-mono text-[9px] text-white/30">
+                <div className="border-t border-white/5 pt-4 mt-8 flex items-center justify-between font-mono text-[9px] text-white/50">
                   <span>AI ENGINE: ACTIVE</span>
                   <span>LATENCY: 12ms</span>
                 </div>
@@ -156,14 +156,14 @@ function CaptionPreview() {
   ];
 
   return (
-    <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
       {captions.map((c) => (
         <div key={c.platform} className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
           <div className="flex items-center justify-between mb-2">
             <span className="font-mono text-[10px] text-electric-blue uppercase tracking-wider font-bold">{c.platform}</span>
             <span className="font-mono text-[10px] text-green-400">{c.confidence}% match</span>
           </div>
-          <p className="text-sm text-white/70 font-light">{c.text}</p>
+          <p className="text-sm text-foreground font-light">{c.text}</p>
         </div>
       ))}
     </div>
@@ -180,7 +180,7 @@ function OptimizerPreview() {
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-xs text-white/40 font-mono uppercase tracking-wider mb-2">Optimal Release Windows</p>
+      <p className="text-xs text-white/60 font-mono uppercase tracking-wider mb-2">Optimal Release Windows</p>
       {schedule.map((s) => (
         <div key={s.day} className="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/[0.02]">
           <div className="flex items-center gap-3">
@@ -188,8 +188,8 @@ function OptimizerPreview() {
               <Calendar className="w-4 h-4 text-electric-blue" />
             </div>
             <div>
-              <span className="text-sm text-white font-medium block">{s.day}</span>
-              <span className="text-[10px] text-white/40 font-mono">{s.time}</span>
+              <span className="text-sm text-foreground font-medium block">{s.day}</span>
+              <span className="text-[10px] text-white/60 font-mono">{s.time}</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -201,7 +201,7 @@ function OptimizerPreview() {
                 className="h-full rounded-full bg-gradient-to-r from-electric-blue to-neon-purple"
               />
             </div>
-            <span className="font-mono text-[10px] text-white/60 w-8 text-right">{s.score}%</span>
+            <span className="font-mono text-[10px] text-white/70 w-8 text-right">{s.score}%</span>
           </div>
         </div>
       ))}
@@ -220,10 +220,10 @@ function AudiencePreview() {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-xs text-white/40 font-mono uppercase tracking-wider mb-1">Listener Geography</p>
+      <p className="text-xs text-white/60 font-mono uppercase tracking-wider mb-1">Listener Geography</p>
       {regions.map((r) => (
         <div key={r.region} className="flex items-center gap-4">
-          <span className="text-xs text-white/60 w-28 shrink-0">{r.region}</span>
+          <span className="text-xs text-foreground w-28 shrink-0">{r.region}</span>
           <div className="flex-1 h-2 rounded-full bg-white/5 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
@@ -232,7 +232,7 @@ function AudiencePreview() {
               className={`h-full rounded-full ${r.color}`}
             />
           </div>
-          <span className="font-mono text-[10px] text-white/50 w-8 text-right">{r.pct}%</span>
+          <span className="font-mono text-[10px] text-white/60 w-8 text-right">{r.pct}%</span>
         </div>
       ))}
     </div>
@@ -266,10 +266,10 @@ function ViralPreview() {
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-3xl font-black font-mono text-white">94%</span>
-          <span className="text-[9px] font-mono text-white/40 uppercase tracking-wider">Viral Score</span>
+          <span className="text-[9px] font-mono text-white/60 uppercase tracking-wider">Viral Score</span>
         </div>
       </div>
-      <p className="text-xs text-white/50 font-light max-w-xs">
+      <p className="text-xs text-white/60 font-light max-w-xs">
         High engagement potential detected based on tempo, genre trends, and historical release patterns.
       </p>
     </div>
