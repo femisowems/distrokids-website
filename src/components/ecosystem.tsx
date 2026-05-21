@@ -7,58 +7,38 @@ import {
   Smartphone, 
   Tv, 
   Disc, 
-  Send
+  Send,
+  Camera,
+  Disc2
 } from "lucide-react";
-import Magnetic from "./magnetic";
+import { streamingPlatforms } from "@/data/distrokid-data";
 
-// Fictional custom vector paths or beautiful representations for streaming logos
-const platforms = [
-  {
-    name: "Spotify",
-    color: "#1DB954",
-    bg: "rgba(29, 185, 84, 0.1)",
-    border: "rgba(29, 185, 84, 0.3)",
-    angle: 0,
-    radius: 200,
-    desc: "100M+ Active Listeners"
-  },
-  {
-    name: "Apple Music",
-    color: "#FC3C44",
-    bg: "rgba(252, 60, 68, 0.1)",
-    border: "rgba(252, 60, 68, 0.3)",
-    angle: 72,
-    radius: 200,
-    desc: "Lossless Audio Streaming"
-  },
-  {
-    name: "TikTok",
-    color: "#FF0050",
-    bg: "rgba(255, 0, 80, 0.1)",
-    border: "rgba(255, 0, 80, 0.3)",
-    angle: 144,
-    radius: 200,
-    desc: "Viral Social Discovery"
-  },
-  {
-    name: "YouTube",
-    color: "#FF0000",
-    bg: "rgba(255, 0, 0, 0.1)",
-    border: "rgba(255, 0, 0, 0.3)",
-    angle: 216,
-    radius: 200,
-    desc: "Global Video & Music Player"
-  },
-  {
-    name: "Amazon Music",
-    color: "#00A8E1",
-    bg: "rgba(0, 168, 225, 0.1)",
-    border: "rgba(0, 168, 225, 0.3)",
-    angle: 288,
-    radius: 200,
-    desc: "Prime Integration Channels"
-  }
-];
+// Dynamically compile angles and descriptions for platforms from imported rebrand dataset
+const platforms = streamingPlatforms.map((plat, i) => {
+  const angle = i * (360 / streamingPlatforms.length);
+  
+  // Custom metadata for creative styling
+  const descriptions: Record<string, string> = {
+    "Spotify": "100M+ Active Listeners",
+    "Apple Music": "Lossless Audio Streaming",
+    "TikTok": "Viral Social Discovery",
+    "YouTube Music": "Global Video & Audio Sync",
+    "Instagram": "Reels & Stories Integration",
+    "Amazon Music": "HD Streaming Outlet"
+  };
+
+  // Safe color configurations
+  const hex = plat.color;
+  
+  return {
+    name: plat.name,
+    color: hex,
+    bg: `rgba(${parseInt(hex.slice(1,3), 16)}, ${parseInt(hex.slice(3,5), 16)}, ${parseInt(hex.slice(5,7), 16)}, 0.1)`,
+    border: `rgba(${parseInt(hex.slice(1,3), 16)}, ${parseInt(hex.slice(3,5), 16)}, ${parseInt(hex.slice(5,7), 16)}, 0.3)`,
+    angle,
+    desc: descriptions[plat.name] || "Syndicated distribution channel"
+  };
+});
 
 export default function MusicEcosystem() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,18 +51,19 @@ export default function MusicEcosystem() {
     offset: ["start end", "end start"]
   });
 
-  const orbitRotation = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const orbitRotation = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const scaleCenter = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
     <section
       id="ecosystem"
       ref={containerRef}
-      className="relative min-h-screen w-full flex flex-col items-center justify-center py-28 px-6 md:px-12 bg-[#050507] overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center py-28 px-6 md:px-12 bg-bg-dark overflow-hidden"
     >
       {/* Background Atmosphere Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-electric-blue/5 glow-blur pointer-events-none z-0" />
       <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-neon-purple/5 glow-blur pointer-events-none z-0" />
+      <div className="absolute inset-0 grid-mesh pointer-events-none z-[-1]" />
 
       {/* Headings */}
       <div className="relative z-10 text-center max-w-3xl mb-24">
@@ -170,8 +151,9 @@ export default function MusicEcosystem() {
                 )}
                 {plat.name === "Apple Music" && <Smartphone style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
                 {plat.name === "TikTok" && <Music style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
-                {plat.name === "YouTube" && <Tv style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
-                {plat.name === "Amazon Music" && <Disc style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
+                {plat.name === "YouTube Music" && <Tv style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
+                {plat.name === "Instagram" && <Camera style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
+                {plat.name === "Amazon Music" && <Disc2 style={{ color: plat.color }} className="w-6 h-6 md:w-7 md:h-7" />}
 
                 {/* Subtitle floating label inside node */}
                 <span className="text-[7px] text-white/40 uppercase font-mono tracking-widest mt-1 hidden md:block">
@@ -214,7 +196,7 @@ export default function MusicEcosystem() {
             </div>
             <div className="flex justify-between">
               <span>ACTIVE PIPES:</span>
-              <span className="text-electric-blue font-bold">140 STORES</span>
+              <span className="text-electric-blue font-bold">150+ STORES</span>
             </div>
             <div className="flex justify-between">
               <span>INTEGRATION:</span>

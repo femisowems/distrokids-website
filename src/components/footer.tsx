@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Magnetic from "./magnetic";
 import { ArrowUp } from "lucide-react";
+import { footerLinks } from "@/data/distrokid-data";
 
 export default function Footer() {
   const localTime = new Date().toLocaleTimeString("en-US", {
@@ -22,18 +23,17 @@ export default function Footer() {
     >
       <div className="w-full max-w-7xl mx-auto flex flex-col justify-between">
         
-        {/* Main Grid: links and details */}
+        {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-24">
           
-          {/* Brand/System statement (Left) */}
+          {/* Brand statement */}
           <div className="lg:col-span-5 text-left flex flex-col items-start gap-4">
             <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40">
-              Syndicated Distribution Protocol
+              Independent Music Distribution
             </span>
             <p className="text-sm text-gray-400 font-light max-w-sm leading-relaxed">
-              DistroKid is the fastest, easiest way for independent musicians to distribute their recordings to global platforms. Designed for creators. Managed by engineers.
+              DistroKid is the fastest, easiest way for independent musicians to distribute their music to every major streaming platform worldwide.
             </p>
-            {/* Live Systems Dashboard widget */}
             <div className="flex flex-wrap gap-4 mt-4 font-mono text-[9px] text-white/50">
               <div className="flex items-center gap-1.5 bg-white/3 border border-white/5 px-2.5 py-1 rounded">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -45,34 +45,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Column 1: platform */}
+          {/* Product links */}
           <div className="lg:col-span-2 text-left flex flex-col gap-4">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">Platform</span>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Distribution</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">AI Promo Kits</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Analytics Portal</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Pricing Tier</a>
+            <span className="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">Product</span>
+            {footerLinks.product.map((link) => (
+              <a key={link.title} href={link.href} className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">
+                {link.title}
+              </a>
+            ))}
           </div>
 
-          {/* Links Column 2: company */}
+          {/* Company links */}
           <div className="lg:col-span-2 text-left flex flex-col gap-4">
             <span className="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">Company</span>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">About Us</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Press Kit</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Career Hub</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Contact Node</a>
+            {footerLinks.company.map((link) => (
+              <a key={link.title} href={link.href} className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">
+                {link.title}
+              </a>
+            ))}
           </div>
 
-          {/* Links Column 3: socials */}
+          {/* Social links */}
           <div className="lg:col-span-2 text-left flex flex-col gap-4">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">Socials</span>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Instagram</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">Spotify Playlists</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">YouTube Outlet</a>
-            <a href="#" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">TikTok Feed</a>
+            <span className="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">Social</span>
+            {footerLinks.social.map((link) => (
+              <a key={link.title} href={link.href} target="_blank" rel="noopener noreferrer" className="text-xs text-white/60 hover:text-electric-blue transition-colors w-max font-light">
+                {link.title}
+              </a>
+            ))}
           </div>
 
-          {/* Back to top magnetic trigger */}
+          {/* Back to top */}
           <div className="lg:col-span-1 flex justify-start lg:justify-end">
             <Magnetic range={40} pullStrength={0.25}>
               <a
@@ -85,26 +88,24 @@ export default function Footer() {
               </a>
             </Magnetic>
           </div>
-
         </div>
 
-        {/* Massive Typographic Branding Wordmark */}
+        {/* Giant wordmark */}
         <div className="relative w-full select-none pointer-events-none mb-12">
           <h2 className="text-[17vw] font-black leading-none tracking-tighter uppercase text-white/[0.2] text-center font-mono">
             DISTROKID
           </h2>
         </div>
 
-        {/* Legal/Bottom Bar */}
+        {/* Legal bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-[9px] text-white/40">
           <span>&copy; {new Date().getFullYear()} DISTROKID INC. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">PRIVACY CODE</a>
-            <a href="#" className="hover:text-white transition-colors">STORE SYSTEM AGREEMENTS</a>
-            <a href="#" className="hover:text-white transition-colors">SECURITY PIPES</a>
+            <a href="#" className="hover:text-white transition-colors">PRIVACY</a>
+            <a href="#" className="hover:text-white transition-colors">TERMS</a>
+            <a href="#" className="hover:text-white transition-colors">SECURITY</a>
           </div>
         </div>
-
       </div>
     </footer>
   );

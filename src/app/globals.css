@@ -30,6 +30,98 @@
   --foreground: #f5f5f7;
 }
 
+/* Theme mode variable overrides */
+.light {
+  --background: #ffffff;
+  --foreground: #0b1220;
+  --color-electric-blue: #0066cc;
+  --color-neon-purple: #6f3fa6;
+  --color-bg-dark: #ffffff;
+  --color-bg-card: #f6f7f9;
+  --color-electric-blue-rgb: 0,102,204;
+  --color-neon-purple-rgb: 111,63,166;
+}
+
+.dark {
+  --background: #030303;
+  --foreground: #f5f5f7;
+  --color-electric-blue: #00f0ff;
+  --color-neon-purple: #9d4edd;
+  --color-bg-dark: #030303;
+  --color-bg-card: #0c0c0e;
+  --color-electric-blue-rgb: 0,240,255;
+  --color-neon-purple-rgb: 157,78,221;
+}
+
+/* Mesh/grid and overlay tokens used by hero and other sections */
+:root, .light, .dark {
+  --grid-line: rgba(255,255,255,0.02);
+  --grid-line-light: rgba(11,18,32,0.03);
+  --overlay-from: rgba(0,0,0,0.8);
+  --overlay-via: rgba(0,0,0,0.1);
+}
+
+.light {
+  --grid-line: var(--grid-line-light);
+  --overlay-from: rgba(8, 14, 26, 0.65);
+  --overlay-via: rgba(8, 14, 26, 0.16);
+}
+
+/* Reusable mesh background class that adapts to theme */
+.grid-mesh {
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);
+}
+
+/* Reusable overlay glare class */
+.overlay-glare {
+  background: linear-gradient(to top, var(--overlay-from), var(--overlay-via), transparent);
+}
+
+/* Light-mode overrides for key UI pieces that use "white/.." utilities */
+.light .glass-panel {
+  background: rgba(250, 251, 253, 0.86);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  box-shadow: 0 6px 18px rgba(11,18,32,0.04);
+}
+
+.light .glass-panel-glow {
+  box-shadow: 0 10px 50px rgba(var(--color-electric-blue-rgb), 0.08), inset 0 0 24px rgba(0,0,0,0.03);
+}
+
+/* Replace many Tailwind white opacity utilities in light mode to dark equivalents */
+.light .border-white\/5 { border-color: rgba(11,18,32,0.08) !important; }
+.light .text-white\/40 { color: rgba(11,18,32,0.78) !important; }
+.light .text-white\/50 { color: rgba(11,18,32,0.68) !important; }
+.light .text-white\/60 { color: rgba(11,18,32,0.56) !important; }
+.light .bg-white\/5 { background-color: rgba(255,255,255,0.96) !important; }
+.light .bg-white\/3 { background-color: rgba(255,255,255,0.94) !important; }
+.light .bg-white\/10 { background-color: rgba(255,255,255,0.98) !important; }
+.light .bg-white\/02 { background-color: rgba(11,18,32,0.02) !important; }
+
+/* Accent utilities mapping to CSS variables */
+.text-electric-blue { color: var(--color-electric-blue) !important; }
+.text-neon-purple { color: var(--color-neon-purple) !important; }
+.bg-electric-blue\/5 { background-color: rgba(var(--color-electric-blue-rgb), 0.05) !important; }
+.bg-neon-purple\/5 { background-color: rgba(var(--color-neon-purple-rgb), 0.05) !important; }
+
+/* Scrollbar for light mode */
+.light ::-webkit-scrollbar-track { background: #f4f5f7; }
+.light ::-webkit-scrollbar-thumb { background: #cfcfcf; }
+
+
+/* Utility aliases used across components that rely on variable-driven colors */
+.bg-bg-dark {
+  background-color: var(--background) !important;
+}
+
+.text-foreground {
+  color: var(--foreground) !important;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);

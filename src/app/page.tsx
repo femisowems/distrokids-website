@@ -10,7 +10,9 @@ import CreatorFirstFeatures from "@/components/features";
 import ExperimentalCTA from "@/components/experimental-cta";
 import Footer from "@/components/footer";
 import Magnetic from "@/components/magnetic";
+import ThemeToggle from "@/components/theme-toggle";
 import { Disc, ArrowRight } from "lucide-react";
+import { navigationLinks } from "@/data/distrokid-data";
 
 export default function Home() {
   return (
@@ -35,31 +37,36 @@ export default function Home() {
             </Magnetic>
           </div>
 
-          {/* Nav Links - Desktop only */}
+          {/* Nav Links - Mapped Dynamically from Rebrand Dataset */}
           <nav className="hidden md:flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-white/50">
-            <Magnetic range={25} pullStrength={0.2}>
-              <a href="#ecosystem" className="hover:text-white transition-colors" data-cursor="pointer">Ecosystem</a>
-            </Magnetic>
-            <Magnetic range={25} pullStrength={0.2}>
-              <a href="#success-stories" className="hover:text-white transition-colors" data-cursor="pointer">Artists</a>
-            </Magnetic>
-            <Magnetic range={25} pullStrength={0.2}>
-              <a href="#ai-tools" className="hover:text-white transition-colors" data-cursor="pointer">AI Tools</a>
-            </Magnetic>
-            <Magnetic range={25} pullStrength={0.2}>
-              <a href="#features" className="hover:text-white transition-colors" data-cursor="pointer">Specs</a>
-            </Magnetic>
+            {navigationLinks.map((link) => (
+              <Magnetic key={link.title} range={25} pullStrength={0.2}>
+                <a href={link.href} className="hover:text-white transition-colors" data-cursor="pointer">
+                  {link.title}
+                </a>
+              </Magnetic>
+            ))}
           </nav>
 
           {/* CTA Header Action */}
           <div className="flex items-center gap-4">
+            <ThemeToggle />
+
+            <a
+              href="/signin"
+              data-cursor="pointer"
+              className="hidden sm:inline-block text-white/60 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-widest"
+            >
+              Sign In
+            </a>
+
             <Magnetic range={35} pullStrength={0.25}>
               <a
-                href="#ecosystem"
+                href="/signup"
                 data-cursor="magnetic"
                 className="group relative inline-flex h-9 items-center justify-center rounded-full bg-white px-5 text-black font-semibold text-[10px] font-mono tracking-widest uppercase transition-transform duration-300 hover:scale-105"
               >
-                <span>Release</span>
+                <span>Sign Up</span>
                 <ArrowRight className="ml-1.5 w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Magnetic>

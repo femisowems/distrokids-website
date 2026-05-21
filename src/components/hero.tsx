@@ -6,6 +6,7 @@ import Image from "next/image";
 import Magnetic from "./magnetic";
 import TextReveal from "./text-reveal";
 import { Play, ArrowUpRight } from "lucide-react";
+import { heroContent } from "@/data/distrokid-data";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Grid Canvas Mesh */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 grid-mesh pointer-events-none z-0" />
 
       {/* Main Content Wrap */}
       <div className="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -51,19 +52,19 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric-blue/20 bg-electric-blue/5 text-electric-blue text-xs font-mono uppercase tracking-[0.15em] mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-electric-blue animate-ping" />
-            <span>Redefining Independence</span>
+            <span>{heroContent.eyebrow}</span>
           </motion.div>
 
           {/* Kinetic Huge Headings */}
           <h1 className="text-[11vw] sm:text-[8vw] lg:text-[5.5vw] font-black leading-[0.85] tracking-tighter uppercase select-none mb-6">
-            <span className="block text-white">Own your</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-[#00a2ff] to-[#7000ff]">Sound.</span>
+            <span className="block text-foreground">Own your</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-electric-blue to-neon-purple">Sound.</span>
           </h1>
 
           <div className="max-w-xl mb-12">
             <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed font-sans">
               <TextReveal 
-                text="Distribute music globally to Spotify, Apple Music, and TikTok. Retain 100% ownership, earnings, and creative authority. Reimagined for the modern independent pioneer."
+                text={heroContent.subtitle}
                 delay={0.15}
               />
             </p>
@@ -77,7 +78,7 @@ export default function Hero() {
                 data-cursor="magnetic"
                 className="group relative inline-flex h-14 items-center justify-center rounded-full bg-white px-8 text-black font-semibold text-sm tracking-wide transition-transform hover:scale-105 duration-350 active:scale-95"
               >
-                <span>Start Releasing</span>
+                <span>{heroContent.ctaPrimary}</span>
                 <ArrowUpRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
               </a>
             </Magnetic>
@@ -85,10 +86,10 @@ export default function Hero() {
             <Magnetic range={50} pullStrength={0.25}>
               <button 
                 data-cursor="pointer"
-                className="inline-flex h-14 items-center gap-3 px-6 rounded-full border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-medium text-sm transition-all duration-300"
+                className="inline-flex h-14 items-center gap-3 px-6 rounded-full border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 bg-black/[0.03] dark:bg-white/5 hover:bg-black/[0.06] dark:hover:bg-white/10 text-foreground font-medium text-sm transition-all duration-300"
               >
-                <Play className="w-4 h-4 fill-white text-white" />
-                <span>Watch Experience</span>
+                <Play className="w-4 h-4 fill-current text-current" />
+                <span>{heroContent.ctaSecondary}</span>
               </button>
             </Magnetic>
           </div>
@@ -119,7 +120,7 @@ export default function Hero() {
             </div>
             
             {/* Glare Glass Frame overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-0 overlay-glare pointer-events-none z-10" />
 
             {/* Fictional Release Stamp Details */}
             <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end text-white font-mono">
@@ -147,7 +148,7 @@ export default function Hero() {
           >
             <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse shrink-0" />
             <div className="font-mono text-left">
-              <span className="text-[9px] text-white/50 uppercase block tracking-wider">UP-LINK DISTRO</span>
+              <span className="text-[9px] text-white/50 uppercase block tracking-wider font-extrabold">{heroContent.stats[0].value} {heroContent.stats[0].label.toUpperCase()}</span>
               <span className="text-xs font-bold text-white block">98k streams/sec</span>
               <span className="text-[9px] text-electric-blue block">Live distribution active</span>
             </div>

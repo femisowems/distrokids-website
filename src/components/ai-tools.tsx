@@ -2,302 +2,276 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { 
-  Sparkles, 
-  BarChart2, 
-  Share2, 
-  TrendingUp, 
-  Calendar, 
-  ArrowRight,
-  CheckCircle,
-  Activity,
-  Globe
-} from "lucide-react";
-import Magnetic from "./magnetic";
+import { Sparkles, Brain, Calendar, MessageSquare } from "lucide-react";
+import { aiTools } from "@/data/distrokid-data";
 
-const aiToolsList = [
-  {
-    id: "audience",
-    title: "Audience Live Analytics",
-    desc: "Scan real-time user engagement and track playlist placements across platforms.",
-    icon: BarChart2,
-    badge: "LIVE FEED"
-  },
-  {
-    id: "viral",
-    title: "Viral Prediction Engine",
-    desc: "Calculate song hook velocity and estimate performance probability before release.",
-    icon: TrendingUp,
-    badge: "94% ACCURACY"
-  },
-  {
-    id: "promo",
-    title: "Automated Promo Kits",
-    desc: "Instantly compile studio canvas visuals, custom social assets, and smart-links.",
-    icon: Share2,
-    badge: "1-CLICK GENERATOR"
-  },
-  {
-    id: "optimizer",
-    title: "Smart Release Optimizer",
-    desc: "Pinpoint target calendar dates and prime time zones for streaming algorithm sync.",
-    icon: Calendar,
-    badge: "ALGORITHM BOOSTER"
-  }
-];
+// Map each tool ID to an icon component
+const iconMap: Record<string, React.ElementType> = {
+  caption: MessageSquare,
+  optimizer: Calendar,
+  audience: Brain,
+  viral: Sparkles,
+};
 
 export default function AIGrowthTools() {
-  const [selectedTool, setSelectedTool] = useState("audience");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeTool = aiTools[activeIndex];
 
   return (
     <section
       id="ai-tools"
-      className="relative min-h-screen w-full flex flex-col justify-center py-28 px-6 md:px-12 lg:px-24 bg-[#050508] border-t border-white/5 overflow-hidden"
+      className="relative min-h-screen w-full py-32 px-6 md:px-12 lg:px-24 bg-bg-dark border-t border-white/5 overflow-hidden"
     >
-      {/* Background Lights */}
-      <div className="absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full bg-electric-blue/5 glow-blur pointer-events-none z-0" />
-      <div className="absolute bottom-[20%] left-[5%] w-[400px] h-[400px] rounded-full bg-neon-purple/5 glow-blur pointer-events-none z-0" />
+      {/* Ambient Glow */}
+      <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-neon-purple/5 glow-blur pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] left-[-10%] w-[400px] h-[400px] rounded-full bg-electric-blue/5 glow-blur pointer-events-none z-0" />
+      <div className="absolute inset-0 grid-mesh pointer-events-none z-[-1]" />
 
       <div className="w-full max-w-7xl mx-auto relative z-10">
-        
         {/* Header */}
         <div className="max-w-3xl mb-20 text-left">
-          <span className="text-electric-blue font-mono text-xs uppercase tracking-[0.2em] block mb-3">
-            Autonomous Artist Acceleration
+          <span className="text-neon-purple font-mono text-xs uppercase tracking-[0.2em] block mb-3">
+            AI-Powered Creator Engine
           </span>
-          <h2 className="text-[9vw] sm:text-[6vw] lg:text-[4.5vw] font-black leading-[0.9] tracking-tighter uppercase mb-6">
-            AI-powered <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-neon-purple">growth tools.</span>
+          <h2 className="text-[9vw] sm:text-[6vw] lg:text-[4vw] font-black leading-[0.9] tracking-tighter uppercase mb-6">
+            YOUR INTELLIGENT <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-electric-blue">
+              GROWTH STUDIO.
+            </span>
           </h2>
           <p className="text-gray-400 font-light text-base md:text-lg">
-            Supercharge your indie career with DistroKid&apos;s intelligent utility network. Seamless optimization from composition to viral charts.
+            Leverage machine learning to optimize release strategies, generate captions, predict virality, and understand your audience at scale.
           </p>
         </div>
 
-        {/* Interactive Dashboard Workspace */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          
-          {/* Tool Selectors Panel (Left) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {aiToolsList.map((tool) => {
-              const Icon = tool.icon;
-              const isActive = selectedTool === tool.id;
+        {/* Two-Column Layout: Tool Selector + Preview */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left: Tool Selector List */}
+          <div className="lg:col-span-5 flex flex-col gap-3">
+            {aiTools.map((tool, i) => {
+              const Icon = iconMap[tool.id] || Sparkles;
+              const isActive = i === activeIndex;
 
               return (
-                <button
+                <motion.button
                   key={tool.id}
-                  onClick={() => setSelectedTool(tool.id)}
-                  data-cursor="pointer"
-                  className={`text-left p-6 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                    isActive 
-                      ? "bg-white/5 border-electric-blue shadow-[0_0_30px_rgba(0,240,255,0.05)]" 
-                      : "bg-transparent border-white/5 hover:border-white/10 hover:bg-white/2"
+                  onClick={() => setActiveIndex(i)}
+                  whileHover={{ x: 4 }}
+                  className={`relative text-left p-5 rounded-xl border transition-all duration-300 group ${
+                    isActive
+                      ? "bg-white/5 border-neon-purple/30 shadow-[0_0_30px_rgba(157,78,221,0.08)]"
+                      : "bg-transparent border-white/5 hover:border-white/10 hover:bg-white/[0.02]"
                   }`}
                 >
-                  <div className={`p-3 rounded-xl border shrink-0 ${
-                    isActive ? "border-electric-blue bg-electric-blue/10 text-electric-blue" : "border-white/10 bg-white/3 text-white/50"
-                  }`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <h3 className={`text-base font-bold ${isActive ? "text-white" : "text-white/70"}`}>
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        isActive
+                          ? "border-neon-purple/40 bg-neon-purple/10 text-neon-purple"
+                          : "border-white/10 bg-white/3 text-white/40 group-hover:text-white/60"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3
+                        className={`text-sm font-bold uppercase font-mono tracking-tight mb-1 transition-colors ${
+                          isActive ? "text-white" : "text-white/60"
+                        }`}
+                      >
                         {tool.title}
                       </h3>
-                      <span className={`font-mono text-[8px] px-2 py-0.5 rounded border ${
-                        isActive ? "border-electric-blue/30 bg-electric-blue/5 text-electric-blue" : "border-white/5 bg-white/2 text-white/30"
-                      }`}>
-                        {tool.badge}
-                      </span>
+                      <p className="text-xs text-white/40 font-light leading-relaxed">
+                        {tool.description}
+                      </p>
                     </div>
-                    <p className="text-xs text-gray-400 leading-relaxed font-light">
-                      {tool.desc}
-                    </p>
                   </div>
-                </button>
+
+                  {/* Active indicator bar */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="ai-tool-indicator"
+                      className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full bg-neon-purple"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
               );
             })}
           </div>
 
-          {/* Dynamic Mockup Workspace Screen (Right) */}
+          {/* Right: Dynamic Interactive Preview */}
           <div className="lg:col-span-7">
-            <div className="relative w-full h-full min-h-[420px] rounded-2xl glass-panel glass-panel-glow border-white/10 p-6 md:p-8 flex flex-col justify-between shadow-2xl overflow-hidden">
-              {/* Screen grid pattern */}
-              <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none z-0" />
-              
-              {/* Workspace Header */}
-              <div className="relative z-10 flex justify-between items-center border-b border-white/5 pb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                  <span className="font-mono text-[10px] text-white/40 ml-2">WORKSPACE // DISTRO_ENGINE.AI</span>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTool.id}
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -15, scale: 0.98 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="glass-panel glass-panel-glow border-white/10 rounded-2xl p-8 min-h-[420px] flex flex-col justify-between"
+              >
+                {/* Preview Header */}
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-neon-purple animate-pulse" />
+                    <span className="font-mono text-[10px] text-neon-purple uppercase tracking-widest">
+                      {activeTool.badge}
+                    </span>
+                  </div>
+                  <span className="font-mono text-[9px] text-white/30 uppercase">
+                    DK-AI-MODULE v3.2
+                  </span>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-[9px] text-electric-blue bg-electric-blue/5 border border-electric-blue/20 px-2 py-0.5 rounded">
-                  <Sparkles className="w-3 h-3" />
-                  <span>ONLINE COMPILING</span>
+
+                {/* Dynamic Mockup Content Based on Active Tool */}
+                <div className="flex-1 flex flex-col justify-center">
+                  {activeTool.id === "caption" && <CaptionPreview />}
+                  {activeTool.id === "optimizer" && <OptimizerPreview />}
+                  {activeTool.id === "audience" && <AudiencePreview />}
+                  {activeTool.id === "viral" && <ViralPreview />}
                 </div>
-              </div>
 
-              {/* Dynamic Content Switching */}
-              <div className="relative z-10 my-8 flex-1 flex items-center justify-center">
-                <AnimatePresence mode="wait">
-                  {selectedTool === "audience" && (
-                    <motion.div
-                      key="audience"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      className="w-full grid grid-cols-1 md:grid-cols-2 gap-6"
-                    >
-                      {/* Metric Card 1 */}
-                      <div className="bg-white/3 border border-white/5 p-5 rounded-xl flex flex-col justify-between">
-                        <div className="flex justify-between items-start text-white/40">
-                          <span className="text-[10px] font-mono uppercase tracking-wider">ACTIVE STREAMS</span>
-                          <Activity className="w-4 h-4 text-electric-blue animate-pulse" />
-                        </div>
-                        <div className="my-3">
-                          <span className="text-3xl font-black text-white font-mono">148,931</span>
-                          <span className="text-green-500 font-mono text-xs ml-2">+12.4%</span>
-                        </div>
-                        <div className="flex gap-2">
-                          <div className="h-6 w-full bg-white/2 rounded relative overflow-hidden flex items-end">
-                            <div className="w-[30%] h-[40%] bg-electric-blue/30 rounded-t" />
-                            <div className="w-[30%] h-[70%] bg-electric-blue/50 rounded-t" />
-                            <div className="w-[40%] h-[90%] bg-electric-blue rounded-t" />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Metric Card 2 */}
-                      <div className="bg-white/3 border border-white/5 p-5 rounded-xl flex flex-col justify-between">
-                        <div className="flex justify-between items-start text-white/40">
-                          <span className="text-[10px] font-mono uppercase tracking-wider">GLOBAL COVERAGE</span>
-                          <Globe className="w-4 h-4 text-neon-purple" />
-                        </div>
-                        <div className="my-3">
-                          <span className="text-3xl font-black text-white font-mono">112 STORES</span>
-                          <span className="text-white/40 font-mono text-[9px] block mt-1">SYNDICATION STABLE</span>
-                        </div>
-                        <span className="text-[9px] text-white/40 font-mono">PRIMARY: NORTH AMERICA / EU</span>
-                      </div>
-                    </motion.div>
-                  )}
+                {/* Footer status bar */}
+                <div className="border-t border-white/5 pt-4 mt-8 flex items-center justify-between font-mono text-[9px] text-white/30">
+                  <span>AI ENGINE: ACTIVE</span>
+                  <span>LATENCY: 12ms</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-                  {selectedTool === "viral" && (
-                    <motion.div
-                      key="viral"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="w-full flex flex-col items-center text-center max-w-sm"
-                    >
-                      {/* Interactive Neon Virality Circle Gauge */}
-                      <div className="relative w-36 h-36 rounded-full border border-white/5 flex items-center justify-center mb-6">
-                        <div className="absolute inset-0 rounded-full border-2 border-dashed border-electric-blue/40 animate-[spin_25s_linear_infinite]" />
-                        <div className="absolute inset-2 rounded-full border border-electric-blue/20 bg-electric-blue/5 flex flex-col justify-center items-center">
-                          <span className="text-3xl font-black text-white font-mono">89%</span>
-                          <span className="text-[9px] text-electric-blue font-mono tracking-widest uppercase mt-1">VIRALITY RATE</span>
-                        </div>
-                      </div>
-                      <h4 className="text-white font-bold text-sm mb-1 uppercase tracking-wider">Algorithm Velocity High</h4>
-                      <p className="text-[11px] text-gray-400 font-light leading-relaxed">
-                        Track hook elements are mapping highly with active sound triggers on TikTok and Instagram Reels. Priority push recommended.
-                      </p>
-                    </motion.div>
-                  )}
+/* ===== Sub-Preview Components ===== */
 
-                  {selectedTool === "promo" && (
-                    <motion.div
-                      key="promo"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      className="w-full flex flex-col gap-4 text-left"
-                    >
-                      <div className="bg-white/3 border border-white/5 p-4 rounded-xl flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-lg bg-electric-blue/10 border border-electric-blue/30 flex items-center justify-center shrink-0">
-                          <Share2 className="w-6 h-6 text-electric-blue" />
-                        </div>
-                        <div>
-                          <span className="text-[10px] text-white/40 font-mono block">CANVAS VISUALIZER GENERATED</span>
-                          <strong className="text-white text-sm">cyberphoria_visualizer_v1.mp4</strong>
-                          <span className="text-[9px] text-green-400 block mt-0.5">Ready for Spotify Canvas</span>
-                        </div>
-                      </div>
+function CaptionPreview() {
+  const captions = [
+    { platform: "TikTok", text: "This one hits different 🎵 New drop out now — link in bio", confidence: 94 },
+    { platform: "Instagram", text: "Late nights in the studio paid off. Stream everywhere now 🔥", confidence: 88 },
+    { platform: "YouTube", text: "Official audio out now. Subscribe for more heat 🎧", confidence: 91 },
+  ];
 
-                      <div className="bg-white/3 border border-white/5 p-4 rounded-xl">
-                        <span className="text-[10px] text-white/40 font-mono block mb-2">AUTO CAPTION RECOMMENDATION</span>
-                        <p className="text-xs text-white/70 italic font-mono bg-black/30 p-3 rounded border border-white/5">
-                          &quot;Finally releasing my new track #Cyberphoria on all platforms tonight! ⚡ Keep it 100% independent. Link in bio!&quot;
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
+  return (
+    <div className="flex flex-col gap-4">
+      {captions.map((c) => (
+        <div key={c.platform} className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="font-mono text-[10px] text-electric-blue uppercase tracking-wider font-bold">{c.platform}</span>
+            <span className="font-mono text-[10px] text-green-400">{c.confidence}% match</span>
+          </div>
+          <p className="text-sm text-white/70 font-light">{c.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-                  {selectedTool === "optimizer" && (
-                    <motion.div
-                      key="optimizer"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 text-left"
-                    >
-                      {/* Priority dates */}
-                      <div className="bg-white/3 border border-white/5 p-5 rounded-xl flex flex-col justify-between">
-                        <div>
-                          <span className="text-[10px] text-white/40 font-mono uppercase block tracking-wider mb-1">OPTIMIZED RELEASE DATE</span>
-                          <h4 className="text-xl font-bold text-white font-mono">FRIDAY, OCT 23</h4>
-                          <span className="text-[10px] text-green-400 font-mono block mt-1">HIGH ALGORITHM DENSITY</span>
-                        </div>
-                        <p className="text-[10px] text-white/40 mt-4 leading-relaxed">
-                          Releasing on Friday synchronizes perfectly with official platform playlist updates.
-                        </p>
-                      </div>
+function OptimizerPreview() {
+  const schedule = [
+    { day: "Monday", time: "6:00 PM", score: 92 },
+    { day: "Wednesday", time: "12:00 PM", score: 87 },
+    { day: "Friday", time: "9:00 AM", score: 95 },
+    { day: "Sunday", time: "3:00 PM", score: 78 },
+  ];
 
-                      {/* Store Sync */}
-                      <div className="bg-white/3 border border-white/5 p-5 rounded-xl flex flex-col justify-between">
-                        <div>
-                          <span className="text-[10px] text-white/40 font-mono uppercase block tracking-wider mb-2">PRIORITY STORE CHECK</span>
-                          <div className="flex flex-col gap-2 font-mono text-[9px] text-white/70">
-                            <div className="flex items-center gap-2">
-                              <CheckCircle className="w-3.5 h-3.5 text-electric-blue" />
-                              <span>SPOTIFY: INSTANT PRE-SAVE</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <CheckCircle className="w-3.5 h-3.5 text-electric-blue" />
-                              <span>APPLE MUSIC: PRE-ADD ALIGN</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <CheckCircle className="w-3.5 h-3.5 text-electric-blue" />
-                              <span>TIKTOK: SOUND SNIPPET SECURED</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Workspace Footer */}
-              <div className="relative z-10 flex justify-between items-center border-t border-white/5 pt-4 text-white/40 text-[9px] font-mono">
-                <span>COMPILED SECURELY VIA DK-AI PRO v4.2</span>
-                <Magnetic range={30} pullStrength={0.2}>
-                  <button className="flex items-center gap-1.5 text-electric-blue hover:text-white transition-colors">
-                    <span>Export Analytics</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </button>
-                </Magnetic>
-              </div>
-
+  return (
+    <div className="flex flex-col gap-3">
+      <p className="text-xs text-white/40 font-mono uppercase tracking-wider mb-2">Optimal Release Windows</p>
+      {schedule.map((s) => (
+        <div key={s.day} className="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/[0.02]">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center">
+              <Calendar className="w-4 h-4 text-electric-blue" />
+            </div>
+            <div>
+              <span className="text-sm text-white font-medium block">{s.day}</span>
+              <span className="text-[10px] text-white/40 font-mono">{s.time}</span>
             </div>
           </div>
-
+          <div className="flex items-center gap-2">
+            <div className="w-16 h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${s.score}%` }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="h-full rounded-full bg-gradient-to-r from-electric-blue to-neon-purple"
+              />
+            </div>
+            <span className="font-mono text-[10px] text-white/60 w-8 text-right">{s.score}%</span>
+          </div>
         </div>
+      ))}
+    </div>
+  );
+}
 
+function AudiencePreview() {
+  const regions = [
+    { region: "United States", pct: 38, color: "bg-electric-blue" },
+    { region: "United Kingdom", pct: 22, color: "bg-neon-purple" },
+    { region: "Germany", pct: 15, color: "bg-electric-blue" },
+    { region: "Brazil", pct: 13, color: "bg-neon-purple" },
+    { region: "Japan", pct: 12, color: "bg-electric-blue" },
+  ];
+
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-xs text-white/40 font-mono uppercase tracking-wider mb-1">Listener Geography</p>
+      {regions.map((r) => (
+        <div key={r.region} className="flex items-center gap-4">
+          <span className="text-xs text-white/60 w-28 shrink-0">{r.region}</span>
+          <div className="flex-1 h-2 rounded-full bg-white/5 overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${r.pct}%` }}
+              transition={{ duration: 1.2, delay: 0.2 }}
+              className={`h-full rounded-full ${r.color}`}
+            />
+          </div>
+          <span className="font-mono text-[10px] text-white/50 w-8 text-right">{r.pct}%</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ViralPreview() {
+  return (
+    <div className="flex flex-col items-center justify-center text-center gap-6">
+      {/* Large circular gauge */}
+      <div className="relative w-40 h-40">
+        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
+          <motion.circle
+            cx="50" cy="50" r="42"
+            fill="none"
+            stroke="url(#viralGrad)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={264}
+            initial={{ strokeDashoffset: 264 }}
+            animate={{ strokeDashoffset: 264 * 0.06 }}
+            transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          />
+          <defs>
+            <linearGradient id="viralGrad">
+              <stop offset="0%" stopColor="var(--color-neon-purple)" />
+              <stop offset="100%" stopColor="var(--color-electric-blue)" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-3xl font-black font-mono text-white">94%</span>
+          <span className="text-[9px] font-mono text-white/40 uppercase tracking-wider">Viral Score</span>
+        </div>
       </div>
-
-    </section>
+      <p className="text-xs text-white/50 font-light max-w-xs">
+        High engagement potential detected based on tempo, genre trends, and historical release patterns.
+      </p>
+    </div>
   );
 }
