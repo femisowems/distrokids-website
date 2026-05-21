@@ -94,14 +94,14 @@ export default function ThemeToggle() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white/6 backdrop-blur rounded-xl border border-white/10 shadow-lg p-2 text-sm text-white/90">
+        <div className="absolute right-0 mt-2 w-44 glass-panel rounded-xl border border-white/10 shadow-lg p-2 text-sm text-foreground">
           <button
             onClick={() => select("system")}
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
             <Laptop className="w-4 h-4 text-white/60" />
-            <span className="flex-1">System</span>
-            {theme === "system" && <span className="w-2 h-2 rounded-full bg-white" />}
+            <span className="flex-1 text-foreground">System</span>
+            {theme === "system" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>
 
           <button
@@ -109,8 +109,8 @@ export default function ThemeToggle() {
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
             <Moon className="w-4 h-4 text-white/60" />
-            <span className="flex-1">Dark</span>
-            {theme === "dark" && <span className="w-2 h-2 rounded-full bg-white" />}
+            <span className="flex-1 text-foreground">Dark</span>
+            {theme === "dark" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>
 
           <button
@@ -118,8 +118,8 @@ export default function ThemeToggle() {
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
             <Sun className="w-4 h-4 text-white/60" />
-            <span className="flex-1">Light</span>
-            {theme === "light" && <span className="w-2 h-2 rounded-full bg-white" />}
+            <span className="flex-1 text-foreground">Light</span>
+            {theme === "light" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>
         </div>
       )}
