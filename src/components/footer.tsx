@@ -92,7 +92,7 @@ export default function Footer() {
 
         {/* Giant wordmark */}
         <div className="relative w-full select-none pointer-events-none mb-12">
-          <h2 className="text-[17vw] font-black leading-none tracking-tighter uppercase text-white/[0.2] text-center font-mono">
+          <h2 className="text-[17vw] font-black leading-none tracking-tighter uppercase text-white/[0.2] light:text-black/40 text-center font-mono">
             DISTROKID
           </h2>
         </div>

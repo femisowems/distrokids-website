@@ -4,6 +4,7 @@ import "./globals.css";
 import { headers } from "next/headers";
 import CustomCursor from "@/components/custom-cursor";
 import SmoothScroll from "@/components/smooth-scroll";
+import Script from "next/script";
 import { pageMetadata } from "@/data/distrokid-data";
 
 // Load premium editorial typography fonts from Google Fonts
@@ -61,8 +62,9 @@ export default async function RootLayout({
       className={`${interTight.variable} ${spaceGrotesk.variable} h-full antialiased ${themeClass}`}
     >
       <body className="min-h-full bg-bg-dark text-foreground flex flex-col font-sans select-none">
-        <script
-          // Pre-hydration theme setter to avoid flash-of-incorrect-theme
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `;(function(){try{var t=localStorage.getItem('theme');var root=document.documentElement;if(t==='light'||t==='dark'){root.classList.remove('light','dark');root.classList.add(t);}else{var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;root.classList.remove('light','dark');root.classList.add(m?'dark':'light');}}catch(e){}})();`,
           }}

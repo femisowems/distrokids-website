@@ -30,9 +30,9 @@ export default function Home() {
           <div className="flex items-center gap-2.5">
             <Magnetic range={30} pullStrength={0.25}>
               <a href="#" className="flex items-center gap-2 select-none group font-mono" data-cursor="pointer">
-                <Disc className="w-5 h-5 text-electric-blue animate-[spin_6s_linear_infinite] group-hover:text-neon-purple transition-colors" />
-                <span className="text-white text-xs font-black tracking-widest uppercase">DISTROKID</span>
-                <span className="text-white/40 text-[9px] font-bold tracking-widest uppercase hidden sm:inline-block border-l border-white/10 pl-2">VOLTA</span>
+                <Disc strokeWidth={1.8} className="w-5 h-5 text-electric-blue light:text-black stroke-current fill-none animate-[spin_6s_linear_infinite] group-hover:text-neon-purple transition-colors" />
+                <span className="text-foreground text-xs font-black tracking-widest uppercase">DISTROKID</span>
+                <span className="text-foreground/60 text-[9px] font-bold tracking-widest uppercase hidden sm:inline-block border-l border-white/10 pl-2">VOLTA</span>
               </a>
             </Magnetic>
           </div>
