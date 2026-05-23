@@ -86,11 +86,11 @@ export default function ThemeToggle() {
         onClick={() => setOpen((s) => !s)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="w-9 h-9 rounded-full flex items-center justify-center bg-white/3 border border-white/5 text-white/80 hover:bg-white/5 transition-colors"
+        className="w-9 h-9 rounded-full flex items-center justify-center bg-white/3 border border-white/5 text-foreground dark:text-white/80 hover:bg-white/5 transition-colors"
         title="Theme"
         data-cursor="pointer"
       >
-        <Sun className="w-4 h-4" />
+        <Sun className="w-4 h-4 text-foreground dark:text-white/80" />
       </button>
 
       {open && (
@@ -99,7 +99,7 @@ export default function ThemeToggle() {
             onClick={() => select("system")}
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
-            <Laptop className="w-4 h-4 text-white/60" />
+            <Laptop className="w-4 h-4 text-foreground dark:text-white/60" />
             <span className="flex-1 text-foreground">System</span>
             {theme === "system" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>
@@ -108,7 +108,7 @@ export default function ThemeToggle() {
             onClick={() => select("dark")}
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
-            <Moon className="w-4 h-4 text-white/60" />
+            <Moon className="w-4 h-4 text-foreground dark:text-white/60" />
             <span className="flex-1 text-foreground">Dark</span>
             {theme === "dark" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>
@@ -117,7 +117,7 @@ export default function ThemeToggle() {
             onClick={() => select("light")}
             className="w-full text-left px-3 py-2 rounded hover:bg-white/3 flex items-center gap-3"
           >
-            <Sun className="w-4 h-4 text-white/60" />
+            <Sun className="w-4 h-4 text-foreground dark:text-white/60" />
             <span className="flex-1 text-foreground">Light</span>
             {theme === "light" && <span className="w-2 h-2 rounded-full bg-electric-blue" />}
           </button>

@@ -42,24 +42,25 @@ export default function ImmersiveStatistics() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[80vh] w-full flex items-center py-32 px-6 md:px-12 lg:px-24 bg-bg-dark border-t border-black/10 dark:border-white/5 overflow-hidden"
+      className="relative min-h-[76vh] w-full flex items-center py-24 px-6 md:px-12 lg:px-24 bg-bg-dark border-t border-black/10 dark:border-white/5 overflow-hidden"
     >
       {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:6rem_6rem] pointer-events-none" />
 
-      <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1.35fr_0.85fr] gap-12 items-center">
         
         {/* Left headline */}
-        <div className="lg:col-span-5 text-left">
+        <div className="text-left lg:pr-6">
           <span className="text-electric-blue font-mono text-xs uppercase tracking-[0.2em] block mb-3">
             Ecosystem Metrics
           </span>
-          <h2 className="text-[9vw] sm:text-[6vw] lg:text-[4vw] font-black leading-[0.9] tracking-tighter uppercase mb-6">
-            THE SCALE OF <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-gray-500 dark:from-white dark:to-gray-500">INDEPENDENCE.</span>
+          <h2 className="text-[9vw] sm:text-[6vw] lg:text-[4vw] font-black leading-[0.86] tracking-tighter uppercase mb-4 max-w-[12ch]">
+            The Future Of<br />
+            <span className="block">Independent Music</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-neon-purple">Starts Here.</span>
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 font-light text-base md:text-lg leading-relaxed">
-            DistroKid powers over two million independent artists globally. Our automated pipes process more releases daily than any corporate label in history.
+          <p className="max-w-[28rem] text-gray-500 dark:text-gray-400 font-light text-sm md:text-base leading-relaxed">
+            DistroKid powers millions of artists globally, moving releases quickly with a distribution system built for modern music.
           </p>
         </div>
 
@@ -71,7 +72,7 @@ export default function ImmersiveStatistics() {
           }}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="lg:col-span-7 flex flex-col gap-12"
+          className="flex flex-col gap-10"
         >
           {/* Dynamic stats from dataset */}
           {displayStats.map((stat) => (
@@ -80,7 +81,7 @@ export default function ImmersiveStatistics() {
                 {stat.label.toUpperCase()}
               </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-[12vw] sm:text-[8vw] lg:text-[6vw] font-black leading-none tracking-tighter text-foreground dark:text-white font-mono">
+                <span className="text-[10vw] sm:text-[6.5vw] lg:text-[4.25vw] font-black leading-none tracking-tighter text-foreground dark:text-white font-mono">
                   {stat.value}
                 </span>
               </div>
@@ -94,7 +95,7 @@ export default function ImmersiveStatistics() {
               LIVE ROYALTY DISPENSATION (USD)
             </span>
             <div className="flex items-baseline gap-2">
-                <span className="text-[9vw] sm:text-[7vw] lg:text-[4.5vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-electric-blue to-neon-purple font-mono select-none">
+                <span className="text-[8vw] sm:text-[5.75vw] lg:text-[3.8vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-electric-blue via-electric-blue to-neon-purple font-mono select-none">
                 ${formatNumber(royaltyCount)}
               </span>
             </div>

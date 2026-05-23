@@ -54,6 +54,9 @@ export default function ArtistSuccess() {
                   alt={artist.artist}
                   fill
                   sizes="340px"
+                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>

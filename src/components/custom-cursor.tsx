@@ -92,7 +92,7 @@ export default function CustomCursor() {
     hover: {
       width: 48,
       height: 48,
-      backgroundColor: "rgba(var(--color-electric-blue-rgb), 0.12)",
+      backgroundColor: "rgba(0, 240, 255, 0.12)",
       border: "1px solid var(--color-electric-blue)",
       boxShadow: "0 0 20px rgba(var(--color-electric-blue-rgb), 0.25)",
       opacity: 1,
