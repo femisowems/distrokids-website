@@ -45,9 +45,9 @@ export default function CreatorFirstFeatures() {
           </span>
           <h2 className="text-[9vw] sm:text-[6vw] lg:text-[4vw] font-black leading-[0.9] tracking-tighter uppercase mb-6">
             ENGINEERED FOR THE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">INDEPENDENT CREATOR.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 light:from-black light:to-gray-600">INDEPENDENT CREATOR.</span>
           </h2>
-          <p className="text-gray-400 font-light text-base md:text-lg">
+          <p className="text-gray-400 light:text-foreground/75 font-light text-base md:text-lg">
             Forget archaic label agreements. DistroKid provides the high-performance infrastructure to distribute, manage, and monetize your music on your own terms.
           </p>
         </div>
@@ -69,27 +69,27 @@ export default function CreatorFirstFeatures() {
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
                 style={{ boxShadow: `0 0 40px ${glow}` }}
-                className={`relative p-8 rounded-2xl border border-white/5 bg-bg-card/50 backdrop-blur-xl flex flex-col justify-between group transition-all duration-300 ${offsetStyle}`}
+                className={`feature-card group ${offsetStyle}`}
               >
                 {/* Hover glow dot */}
                 <div className="absolute top-6 right-6 w-1.5 h-1.5 rounded-full bg-electric-blue/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div>
-                  <div className="w-12 h-12 rounded-xl border border-white/10 bg-white/3 flex items-center justify-center text-white/60 group-hover:text-electric-blue group-hover:border-electric-blue/30 group-hover:bg-electric-blue/5 transition-all duration-300 mb-8">
+                  <div className="feature-icon-container">
                     <Icon className="w-5 h-5 transition-transform duration-500 group-hover:rotate-12" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-3 uppercase font-mono tracking-tight">
+                  <h3 className="feature-card-title">
                     {feat.title}
                   </h3>
-                  <p className="text-xs text-gray-400 font-light leading-relaxed">
+                  <p className="feature-card-desc">
                     {feat.description}
                   </p>
                 </div>
 
-                <div className="mt-8 border-t border-white/5 pt-4 flex items-center justify-between text-white/30 group-hover:text-white/60 transition-colors">
+                <div className="feature-card-footer">
                   <span className="font-mono text-[9px] uppercase tracking-wider">Active</span>
-                  <div className="w-4 h-[1px] bg-white/20 group-hover:bg-electric-blue group-hover:w-8 transition-all duration-300" />
+                  <div className="feature-card-line" />
                 </div>
               </motion.div>
             );

@@ -60,7 +60,7 @@ export default function AIGrowthTools() {
                   className={`relative text-left p-5 rounded-xl border transition-all duration-300 group ${
                     isActive
                       ? "bg-white/5 border-neon-purple/30 shadow-[0_0_30px_rgba(157,78,221,0.08)]"
-                      : "bg-transparent border-white/5 hover:border-white/10 hover:bg-white/[0.02]"
+                      : "bg-transparent border-white/5 hover:border-white/10 hover:bg-white/[0.02] light:hover:bg-black/[0.02]"
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -68,7 +68,7 @@ export default function AIGrowthTools() {
                       className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isActive
                           ? "border-neon-purple/40 bg-neon-purple/10 text-neon-purple"
-                          : "border-white/10 bg-white/3 text-white/60 group-hover:text-white/80"
+                          : "border-white/10 bg-white/3 light:bg-black/5 text-white/60 light:text-foreground/60 group-hover:text-white/80 light:group-hover:text-foreground/80"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -81,7 +81,7 @@ export default function AIGrowthTools() {
                       >
                         {tool.title}
                       </h3>
-                      <p className="text-xs text-white/60 font-light leading-relaxed">
+                      <p className="text-xs text-white/60 light:text-foreground/70 font-light leading-relaxed">
                         {tool.description}
                       </p>
                     </div>
