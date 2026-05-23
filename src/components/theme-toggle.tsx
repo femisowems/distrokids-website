@@ -13,11 +13,29 @@ export default function ThemeToggle() {
   });
   const menuRef = useRef<HTMLDivElement | null>(null);
 
+  function applyTheme(t: Theme) {
+    const root = document.documentElement;
+    if (t === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else if (t === "light") {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    } else {
+      // system
+      root.classList.remove("light");
+      root.classList.remove("dark");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (prefersDark) root.classList.add("dark");
+      else root.classList.add("light");
+    }
+  }
+
   useEffect(() => {
     applyTheme(theme);
 
     let mq: MediaQueryList | null = null;
-    const handleSystemChange = (e: MediaQueryListEvent) => {
+    const handleSystemChange = () => {
       if (theme === "system") applyTheme("system");
     };
 
@@ -50,33 +68,15 @@ export default function ThemeToggle() {
     return () => window.removeEventListener("click", onClick);
   }, []);
 
-  function applyTheme(t: Theme) {
-    const root = document.documentElement;
-    if (t === "dark") {
-      root.classList.add("dark");
-      root.classList.remove("light");
-    } else if (t === "light") {
-      root.classList.add("light");
-      root.classList.remove("dark");
-    } else {
-      // system
-      root.classList.remove("light");
-      root.classList.remove("dark");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (prefersDark) root.classList.add("dark");
-      else root.classList.add("light");
-    }
-  }
-
   function select(t: Theme) {
     setTheme(t);
     localStorage.setItem("theme", t);
     try {
       // Persist theme in a cookie for SSR to read (1 year)
-      var d = new Date();
+      const d = new Date();
       d.setTime(d.getTime() + 365*24*60*60*1000);
       document.cookie = `theme=${t}; expires=${d.toUTCString()}; path=/`;
-    } catch (e) {}
+    } catch {}
     setOpen(false);
   }
 

@@ -36,14 +36,14 @@ export default async function RootLayout({
     const hdr = await headers();
     if (hdr) {
       // Try headers.get('cookie') if available
-      if (typeof (hdr as any).get === "function") {
-        const cookieHeader = (hdr as any).get("cookie") || "";
+      if (typeof (hdr as unknown as Headers).get === "function") {
+        const cookieHeader = (hdr as unknown as Headers).get("cookie") || "";
         themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
-      } else if (typeof (hdr as any)[Symbol.iterator] === "function") {
+      } else if (typeof (hdr as unknown as Iterable<[string, string]>)[Symbol.iterator] === "function") {
         // Iterate headers entries to find cookie
         let cookieHeader = "";
-        for (const entry of hdr as any) {
-          const [k, v] = entry as [string, string];
+        for (const entry of (hdr as unknown as Iterable<[string, string]>)) {
+          const [k, v] = entry;
           if (k && k.toLowerCase() === "cookie") {
             cookieHeader = v;
             break;
@@ -52,7 +52,7 @@ export default async function RootLayout({
         themeCookie = cookieHeader.split(";").map((s: string) => s.trim()).find((s: string) => s.startsWith("theme="))?.split("=")[1];
       }
     }
-  } catch (e) {
+  } catch {
     themeCookie = undefined;
   }
   const themeClass = themeCookie === "dark" ? "dark" : themeCookie === "light" ? "light" : "";

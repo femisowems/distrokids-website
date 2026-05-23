@@ -1,18 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { testimonials } from "@/data/distrokid-data";
 
 export default function ArtistSuccess() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const xSlide = useTransform(scrollYProgress, [0, 1], [0, -120]);
 
   return (
     <section

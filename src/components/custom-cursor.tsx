@@ -73,7 +73,10 @@ export default function CustomCursor() {
   // Enable only on desktop devices with cursor pointers
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
-    setIsDesktop(window.matchMedia("(pointer: fine)").matches);
+    const checkPointer = () => {
+      setIsDesktop(window.matchMedia("(pointer: fine)").matches);
+    };
+    requestAnimationFrame(checkPointer);
   }, []);
 
   if (!isDesktop) return null;

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Magnetic from "./magnetic";
 import { ArrowUp } from "lucide-react";
 import { footerLinks } from "@/data/distrokid-data";

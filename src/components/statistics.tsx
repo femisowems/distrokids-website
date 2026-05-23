@@ -74,7 +74,7 @@ export default function ImmersiveStatistics() {
           className="lg:col-span-7 flex flex-col gap-12"
         >
           {/* Dynamic stats from dataset */}
-          {displayStats.map((stat, i) => (
+          {displayStats.map((stat) => (
             <motion.div key={stat.label} variants={itemVariants} className="border-b border-black/10 dark:border-white/5 pb-8">
               <span className="text-[10px] text-black/45 dark:text-white/40 font-mono tracking-widest block mb-2 uppercase">
                 {stat.label.toUpperCase()}
