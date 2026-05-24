@@ -59,6 +59,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${interTight.variable} ${spaceGrotesk.variable} h-full antialiased ${themeClass}`}
     >
       <body className="min-h-full bg-bg-dark text-foreground flex flex-col font-sans select-none">

@@ -5,7 +5,7 @@
 
 export const heroContent = {
   eyebrow: "Independent Music Distribution",
-  title: "Own Your Sound.",
+  title: "Share your music with the world.",
   subtitle:
     "Upload your music once and distribute everywhere while keeping 100% of your royalties.",
   ctaPrimary: "Start Releasing",
@@ -55,39 +55,39 @@ export const streamingPlatforms = [
 
 export const features = [
   {
-    title: "Unlimited Uploads",
+    title: "DistroKid",
     description:
-      "Release as much music as you want without restrictions.",
+      "Share your music with the world. ",
     icon: "Infinity",
   },
   {
-    title: "Keep 100% Royalties",
+    title: "DistroVideo",
     description:
-      "Artists keep every dollar they earn from streaming revenue.",
+      "Get your music video everywhere.",
     icon: "Coins",
   },
   {
-    title: "Fast Distribution",
+    title: "Mixea.",
     description:
-      "Get your music live on major streaming services quickly.",
+      "Instantly master your music.",
     icon: "Zap",
   },
   {
-    title: "AI Growth Tools",
+    title: "Direct.",
     description:
-      "Generate promotional content and optimize campaigns using AI.",
+      "Turn your music into merch.",
     icon: "Sparkles",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Bandzoogle.",
     description:
-      "Track streams, audience growth, and platform performance.",
+      "Build a website for your music.",
     icon: "BarChart3",
   },
   {
-    title: "Split Payments",
+    title: "Free Goodies",
     description:
-      "Automatically split royalties between collaborators.",
+      "Tools to polish & promote your music.",
     icon: "PieChart",
   },
 ];
@@ -129,63 +129,63 @@ export const aiTools = [
 
 export const testimonials = [
   {
-    artist: "NLE Choppa",
+    artist: "INJI",
     genre: "Independent Hip-Hop",
     magazine: "VOLTA // THE RAP ISSUE",
     tagline: "INDIE AT SCALE",
     issue: "ISSUE 102",
-    quote: "DistroKid helped me release music independently at scale.",
-    image: "/images/artist_success_one.png", // Uses our high-aesthetic generated portraits
+    quote: "The power to have total control over your distribution is priceless. DistroKid is the fastest and most efficient way to get your music out there!",
+    image: "/images/testimonial-inji.webp", // Uses our high-aesthetic generated portraits
     stats: "150M+ STREAMS"
   },
   {
-    artist: "Arizona Zervas",
+    artist: "Nobigdyl",
     genre: "Indie Pop Artist",
     magazine: "HARMONY // URBAN SOUNDS",
     tagline: "VIRAL DISCOVERY",
     issue: "ISSUE 32",
-    quote: "The easiest distribution platform I've ever used. Completely artist-first.",
-    image: "/images/artist_success_two.png",
+    quote: "DistroKid is truly invested in the success of independent artists.",
+    image: "/images/testimonial-nobigdyl.webp",
     stats: "80M+ STREAMS"
   },
   {
-    artist: "LANY",
+    artist: "Powfu",
     genre: "Alternative Synth-Rock",
     magazine: "SONIC CURRENTS // ROCK INDIE",
     tagline: "STREAMLINED OPERATIONS",
     issue: "ISSUE 54",
-    quote: "Fast uploads, transparent payouts, and great creator tools to accelerate releases.",
-    image: "/images/artist_success_three.png",
+    quote: "I’ve been working with DistroKid for over 7 years. They make it quick & easy to get my royalties. Don’t need a label when I’ve got DistroKid.",
+    image: "/images/testimonial-powfu.webp",
     stats: "120M+ STREAMS"
   },
   {
-    artist: "Christian Kuria",
+    artist: "Haley Joelle",
     genre: "Contemporary R&B Pioneer",
     magazine: "VOLTA // THE R&B CHRONICLES",
     tagline: "CREATIVE LIBERTY",
     issue: "ISSUE 12",
-    quote: "DistroKid gives independent artists complete creative freedom and absolute control over masters.",
-    image: "/images/artist_success_one.png",
+    quote: "DistroKid allowed me to have the flexibility to release songs I love & my audience loves whenever I want, and have full creative control over it.",
+    image: "/images/testimonial-haley-joelle.webp",
     stats: "40M+ STREAMS"
   },
   {
-    artist: "The Red Pears",
+    artist: "Kei Henderson, 21 Savage",
     genre: "Indie Rock Outfit",
     magazine: "HARMONY // BAND ARCHIVE",
     tagline: "UNIFIED SPLITS",
     issue: "ISSUE 87",
-    quote: "A modern platform designed specifically for collaborative independent artists and bandmates.",
-    image: "/images/artist_success_two.png",
+    quote: "I love DistroKid because it's incredibly user friendly and there's no middleman.",
+    image: "/images/testimonial-kei-henderson_21-savage.webp",
     stats: "25M+ STREAMS"
   },
   {
-    artist: "Jessia",
+    artist: "Eydrey",
     genre: "Indie Vocal Icon",
     magazine: "SONIC CURRENTS // POP WAVE",
     tagline: "TRANSPARENT METRICS",
     issue: "ISSUE 04",
-    quote: "Simple, beautiful, and transparent. Releasing music has never felt this easy.",
-    image: "/images/artist_success_three.png",
+    quote: "Easily, the best music distributor out there for indie artists like myself.",
+    image: "/images/testimonial-eydrey.webp",
     stats: "30M+ STREAMS"
   }
 ];
