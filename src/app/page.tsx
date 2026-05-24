@@ -7,6 +7,7 @@ import ArtistSuccess from "@/components/artist-success";
 import AIGrowthTools from "@/components/ai-tools";
 import ImmersiveStatistics from "@/components/statistics";
 import CreatorFirstFeatures from "@/components/features";
+import FAQSection from "@/components/faq";
 import ExperimentalCTA from "@/components/experimental-cta";
 import Footer from "@/components/footer";
 import Magnetic from "@/components/magnetic";
@@ -81,6 +82,7 @@ export default function Home() {
       <AIGrowthTools />
       <ImmersiveStatistics />
       <CreatorFirstFeatures />
+      <FAQSection />
       <ExperimentalCTA />
       <Footer />
 

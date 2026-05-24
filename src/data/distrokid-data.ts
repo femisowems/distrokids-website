@@ -214,27 +214,40 @@ export const faqItems = [
   {
     question: "What is DistroKid?",
     answer:
-      "DistroKid is a music distribution platform that helps artists upload music to Spotify, Apple Music, TikTok, and more.",
+      "DistroKid is a service for musicians that puts your music into online stores and streaming services. Then when people listen to your music, we send you money.",
+    featured: true,
   },
   {
-    question: "How much does it cost?",
+    question: "Why should I use DistroKid?",
     answer:
-      "Plans start at an affordable yearly subscription with unlimited uploads.",
+      "All your music should be in stores. DistroKid is the only service that lets you upload unlimited music to stores for one low price and keep 100% of your earnings.",
+    featured: true,
   },
   {
-    question: "Do artists keep their royalties?",
+    question: "Why is DistroKid better?",
     answer:
-      "Yes. Artists keep 100% of the royalties earned from streaming platforms.",
+      "DistroKid gets your music into stores in a fraction of the time it takes many competitors. We also offer great customer service, daily stats, a simple interface, and unique features.",
+    featured: true,
   },
   {
-    question: "How fast is distribution?",
+    question: "Who uses DistroKid?",
     answer:
-      "Most releases appear on streaming platforms within days.",
+      "DistroKid is for solo musicians, artists, bands, DJs, performers, producers, and creators who record music at home or in the studio. We also have services for labels.",
   },
   {
-    question: "Can teams split payments?",
+    question: "How much will it cost me?",
     answer:
-      "Yes. Revenue can automatically be split among collaborators.",
+      "Only $24.99 to upload unlimited songs and albums for a year.",
+  },
+  {
+    question: "How much of my sales does DistroKid keep?",
+    answer:
+      "None.",
+  },
+  {
+    question: "Can DistroKid distribute music videos?",
+    answer:
+      "Yes! We created DistroVid to get your music videos into Apple Music, Vevo, Tidal, and Boomplay. For only $8.25/month, you keep 100% of earnings. Create a free account to receive discounts.",
   },
 ];
 
