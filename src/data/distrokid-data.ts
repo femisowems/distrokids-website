@@ -187,6 +187,26 @@ export const testimonials = [
     quote: "Easily, the best music distributor out there for indie artists like myself.",
     image: "/images/testimonial-eydrey.webp",
     stats: "30M+ STREAMS"
+  },
+  {
+    artist: "Christian Kuiria",
+    genre: "Indie Vocal Icon",
+    magazine: "SONIC CURRENTS // POP WAVE",
+    tagline: "TRANSPARENT METRICS",
+    issue: "ISSUE 04",
+    quote: "Now, more than ever, artists have the tools to grow their fan bases on their own terms. DistroKid represents a change in the zeitgeist of music that is very appreciated!",
+    image: "/images/testimonial-christian-kuiria.webp",
+    stats: "30M+ STREAMS"
+  },
+  {
+    artist: "Jósean Log",
+    genre: "Indie Vocal Icon",
+    magazine: "SONIC CURRENTS // POP WAVE",
+    tagline: "TRANSPARENT METRICS",
+    issue: "ISSUE 04",
+    quote: "There's nothing like being able to earn a decent living off your music. DistroKid has helped me achieve just that, and it has even made some of the tedious parts of the process fun.",
+    image: "/images/testimonial-josean-log.webp",
+    stats: "30M+ STREAMS"
   }
 ];
 
