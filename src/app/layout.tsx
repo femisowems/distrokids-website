@@ -55,7 +55,7 @@ export default async function RootLayout({
   } catch {
     themeCookie = undefined;
   }
-  const themeClass = themeCookie === "dark" ? "dark" : themeCookie === "light" ? "light" : "";
+  const themeClass = themeCookie === "light" ? "light" : "dark";
   return (
     <html
       lang="en"
@@ -67,7 +67,7 @@ export default async function RootLayout({
           id="theme-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: `;(function(){try{var t=localStorage.getItem('theme');var root=document.documentElement;if(t==='light'||t==='dark'){root.classList.remove('light','dark');root.classList.add(t);}else{var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;root.classList.remove('light','dark');root.classList.add(m?'dark':'light');}}catch(e){}})();`,
+            __html: `;(function(){try{var t=localStorage.getItem('theme');var root=document.documentElement;if(t==='light'||t==='dark'){root.classList.remove('light','dark');root.classList.add(t);}else{root.classList.remove('light','dark');root.classList.add('dark');}}catch(e){}})();`,
           }}
         />
         <SmoothScroll>

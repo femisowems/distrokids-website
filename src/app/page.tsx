@@ -12,6 +12,7 @@ import ExperimentalCTA from "@/components/experimental-cta";
 import Footer from "@/components/footer";
 import Magnetic from "@/components/magnetic";
 import ThemeToggle from "@/components/theme-toggle";
+import InterviewCompanion from "@/components/interview-companion";
 import { Disc, ArrowRight } from "lucide-react";
 import { navigationLinks } from "@/data/distrokid-data";
 
@@ -85,6 +86,7 @@ export default function Home() {
       <FAQSection />
       <ExperimentalCTA />
       <Footer />
+      <InterviewCompanion />
 
     </div>
   );

@@ -8,8 +8,8 @@ type Theme = "system" | "light" | "dark";
 export default function ThemeToggle() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") return "system";
-    return (localStorage.getItem("theme") as Theme) || "system";
+    if (typeof window === "undefined") return "dark";
+    return (localStorage.getItem("theme") as Theme) || "dark";
   });
   const menuRef = useRef<HTMLDivElement | null>(null);
 
