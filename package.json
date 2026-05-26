@@ -1,7 +1,7 @@
 {
   "name": "distrokids-website",
-  "version": "1.0.0",
-  "description": "An award-winning, creative-dev inspired immersive digital marketing redesign of the DistroKid website in Next.js 15, Framer Motion, and Tailwind CSS v4.",
+  "version": "1.1.0",
+  "description": "An award-winning, immersive digital marketing redesign of the DistroKid website in Next.js 16, Framer Motion, and Tailwind CSS v4, featuring an interactive Volta Interview & Marketing Sandbox Console.",
   "private": true,
   "author": "Creative Agency Pioneer",
   "license": "MIT",
@@ -14,7 +14,10 @@
     "lenis-smooth-scroll",
     "creative-development",
     "editorial-brutalist",
-    "interactive-showcase"
+    "interactive-showcase",
+    "interview-companion",
+    "marketing-sandbox",
+    "payout-simulator"
   ],
   "scripts": {
     "dev": "next dev",

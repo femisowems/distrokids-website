@@ -63,3 +63,7 @@ coverage/
 
 # Turbopack cache logs
 .turbo/
+
+# AI Tooling & Sandboxes
+/scratch/
+.system_generated/

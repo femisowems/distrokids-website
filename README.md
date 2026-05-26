@@ -52,6 +52,14 @@ This project serves as a production-grade demonstration of next-generation inter
 ### 8. Asymmetrical Brutalist Layout Grids
 *   **Design**: Contrast-rich layouts blending editorial magazine stories, glowing backdrops, moving marquee tickers, noise overlays, and floating album covers.
 
+### 9. Interactive Marketing Console & Pitch Deck
+*   **Console Trigger**: Pulses dynamically in the bottom-right corner (`⚡ VOLTA CONSOLE`) and auto-triggers after a 2.8-second load delay to instantly engage visitors.
+*   **Rebrand Pitch Deck Tab**: Outlines key growth strategies for the "DistroKid Volta" rebrand, addressing next-gen creator loops, retention multipliers, and digital performance metrics.
+*   **Live Sandbox Controls Tab**:
+    *   **Brand Theme Accent Picker**: Dynamically rewrites root custom property colors (Electric Cyan, Cyber Pink, Acid Lime, Sunset Gold) in real time to re-accent the entire landing page.
+    *   **Viral Campaign Simulator**: Custom marketing metrics calculator processing budget, virality multiplier, and conversion rate sliders to output projected streams, CPA, and ROAS dynamically.
+*   **Interviewer Welcome Tab**: Personalized memo welcoming the DistroKid Senior Marketing Engineer with built-in custom confetti-burst animation loops.
+
 ---
 
 ## 🎨 Creative Architecture & Styling System
@@ -149,6 +157,7 @@ distrokids-website/
 │   │   ├── features.tsx      # Developer specs cards displaying asymmetric layouts
 │   │   ├── footer.tsx        # High-fashion brand footer with real-time operational feeds
 │   │   ├── hero.tsx          # Interactive intro with soundwave animations and floating album art
+│   │   ├── interview-companion.tsx # High-contrast modular interactive sandbox and rebrand pitch deck
 │   │   ├── magnetic.tsx      # Bounding-box distance tracking script pulling items to mouse
 │   │   ├── smooth-scroll.tsx # Lenis wrapper initializing inertial scroll velocities
 │   │   ├── statistics.tsx    # Counter metrics and active royalty ticker
