@@ -4,6 +4,7 @@ import "./globals.css";
 import { headers } from "next/headers";
 import CustomCursor from "@/components/custom-cursor";
 import SmoothScroll from "@/components/smooth-scroll";
+import PlaybookMode from "@/components/playbook-mode";
 import Script from "next/script";
 import { pageMetadata } from "@/data/distrokid-data";
 
@@ -74,6 +75,7 @@ export default async function RootLayout({
           {/* Global Cinematic Elements */}
           <div className="grain-overlay animate-noise" />
           <CustomCursor />
+          <PlaybookMode />
           
           <main className="flex-1 flex flex-col">
             {children}

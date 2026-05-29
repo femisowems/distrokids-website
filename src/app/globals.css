@@ -390,3 +390,30 @@ html.lenis, html.lenis body {
 .light .feature-card-line {
   background-color: rgba(11, 18, 32, 0.2); /* bg-foreground/20 */
 }
+
+/* Playbook Mode: bottom-left floating toggle and panel */
+.playbook-mode-toggle {
+  left: 1rem;
+  bottom: 1rem;
+}
+
+.playbook-hint {
+  max-width: 18rem;
+}
+
+@media (max-width: 640px) {
+  .playbook-hint { max-width: 14rem; }
+}
+
+/* Playbook panel specifics */
+.playbook-panel {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.playbook-panel button[disabled] {
+  cursor: not-allowed;
+}
+
+.playbook-panel .bg-electric-blue\/5 { background-color: rgba(var(--color-electric-blue-rgb), 0.05) !important; }
